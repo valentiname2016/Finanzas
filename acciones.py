@@ -26,8 +26,8 @@ class Acciones:
             print("No se pudieron obtener datos")
 
     def rentabilidad(self):
-        if self.precioMinimo != 0:
-            return (self.precioCierre-self.precioInicial)-self.precioInicial
+        if self.precioInicial != 0:
+            return (self.precioCierre-self.precioInicial)/self.precioInicial
         else:
             return 0
         
@@ -38,7 +38,7 @@ class Acciones:
         print(f"Precio máximo: {self.precioMaximo}")
         print(f"Precio cierre: {self.precioCierre}")
         print(f"Dividendo: {self.dividendo}")
-        #print(f"Rentabilidad: {self.rentabilidad():.2%}")
+        print(f"Rentabilidad: {self.rentabilidad():.2%}")
 
 
         
