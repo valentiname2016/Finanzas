@@ -1,21 +1,31 @@
 from historial import ListaEnlazada
 from acciones import Acciones
-#from transacciones import 
-from datetime import date
+from transacciones import Transaccion
+from CDTBonos import CDTBonos
+
+from datetime import timedelta, date
+import matplotlib.pyplot as plt
+
 
 class Portafolio:
 
-    def __init__(self,capitalInicial:float):
-        self.capitalDisponible = capitalInicial
-        self.acciones = dict[str, Acciones] = {}
-        #self.cdt/bonos
-        self.historialTransacciones = ListaEnlazada()
-        self.historialValor: list[tuple] = []
-        self.diaActual = 0
-
-        print(f"Portafolio creado con capital inicial de: {self.capitalDisponible}")
+    def __init__(self, capital_inicial):
+        self.capital_inicial = capital_inicial
+        self.capital_disponible = capital_inicial
+        self.historial = ListaEnlazada()
+        self.posiciones = {}
+        self.valores_totales = []
+        self.ganancia_por_dividendos = 0.0
+        self.mi_cdt = None
 
     
+    def agregar_accion(self, ticker):
+        if ticker not in self.posiciones:
+            self.posiciones[ticker] = 0
+            print(f"Acción {ticker} agregada.")
+
+
+
     def comprar(self, ticker:str, cantidad:int, fechaCompra:date=None) -> bool:
         
         if ticker not in self.acciones:
