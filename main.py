@@ -82,4 +82,24 @@ while continuar == True:
         tasa_anual = float(input("Tasa efectiva anual (ejemplo: 0.12): "))
         monto_cdt = float(input("Cuánto capital quieres invertir en el CDT: "))
         mi_p.agregar_cdt(tasa_anual, 365, monto_cdt)
+    
+    elif opcion == "5":
+        print("\nSIMULACIÓN")
+        f_inicio = date.fromisoformat(input("Fecha de inicio (AAAA-MM-DD): "))
+        f_fin = date.fromisoformat(input("Fecha de fin (AAAA-MM-DD): "))
+        mi_p.simular(f_inicio, f_fin)
+        print("Simulación terminada")
+
+    elif opcion == "6":
+        mi_p.resumen()
+
+    elif opcion == "7":
+        mi_p.grafica()
+
+    elif opcion == "8":
+        print("Sesión finalizada.")
+        continuar = False
+
+    else:
+        print("Opción no válida. Por favor seleccione una opción del menú.")
         
